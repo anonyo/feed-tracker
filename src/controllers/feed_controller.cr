@@ -6,7 +6,8 @@ class FeedController < ApplicationController
   end
 
   def index
-    feeds = Feed.all
+    return unless (current_user = context.current_user) && current_user.feeds
+    user_feeds = current_user.feeds.all
     render "index.slang"
   end
 

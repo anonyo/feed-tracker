@@ -7,4 +7,4 @@
   == csrf_tag
   - if (current_user = context.current_user)
     == hidden_field(name: "user_id", value: current_user.id)
-  == submit("Submit", class: "btn btn-primary btn-sm")
+  == submit("Submit", class: "btn btn-primary btn-lg")
