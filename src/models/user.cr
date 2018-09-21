@@ -9,6 +9,8 @@ class User < Granite::Base
   field hashed_password : String
   timestamps
 
+  has_many :feeds
+
   validate :email, "is required", ->(user : User) do
     (email = user.email) ? !email.empty? : false
   end

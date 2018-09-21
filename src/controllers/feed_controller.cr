@@ -24,6 +24,7 @@ class FeedController < ApplicationController
 
   private def feed_params
     params.validation do
+      required(:user_id) { |f| !f.nil? }
     end
   end
 
