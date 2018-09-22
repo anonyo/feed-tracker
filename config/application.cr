@@ -1,9 +1,13 @@
 require "./initializers/**"
 
 require "amber"
+require "mosquito"
 require "../src/models/**"
 require "../src/pipes/**"
 require "../src/models/**"
+require "../src/jobs/**"
+
+Mosquito::Runner.start
 
 require "../src/controllers/application_controller"
 require "../src/controllers/**"
