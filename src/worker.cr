@@ -1,6 +1,5 @@
 require "../config/*"
-Granite::ORM.settings.logger = Mosquito::Base.logger
+Granite::Settings.new.logger = Mosquito::Base.logger
 
 # if not using Quartz, remove
-Quartz.config.logger = Mosquito::Base.logger
 Mosquito::Runner.start

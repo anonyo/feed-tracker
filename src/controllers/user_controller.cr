@@ -35,6 +35,7 @@ class UserController < ApplicationController
     params.validation do
       required(:email) { |f| !f.nil? && !f.empty? }
       optional(:password) { |f| !f.nil? && !f.empty? }
+      optional(:pushover_token) { |f| !f.nil? && !f.empty? }
     end
   end
 end

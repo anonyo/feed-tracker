@@ -13,9 +13,13 @@ class FeedController < ApplicationController
 
   def create
     feed = Feed.new feed_params.validate!
-    return redirect_to action: :index, flash: {"success" => "Created feed successfully."} if feed.save
-    flash["danger"] = "Could not create Feed!"
-    render "new.slang"
+    if feed.save
+      NotifcationJob.new(feed: feed).enqueue(in: 1.minute)
+      redirect_to action: :index, flash: {"success" => "Created feed successfully."}
+    else
+      flash["danger"] = "Could not create Feed!"
+      render "new.slang"
+    end
   end
 
   def destroy
@@ -25,7 +29,7 @@ class FeedController < ApplicationController
 
   private def feed_params
     params.validation do
-      required(:user_id) { |f| !f.nil? }
+      required(:user_id) { |f| !f.empty? }
     end
   end
 

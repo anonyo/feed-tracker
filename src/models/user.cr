@@ -6,6 +6,7 @@ class User < Granite::Base
   adapter pg
   primary id : Int64
   field email : String
+  field pushover_token : String
   field hashed_password : String
   timestamps
 
